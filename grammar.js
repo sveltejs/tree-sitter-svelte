@@ -38,7 +38,6 @@ export default grammar(HTML, {
 			choice(
 				// @ts-expect-error it's fine
 				original,
-
 				$.if_statement,
 				$.each_statement,
 				$.await_statement,
@@ -118,8 +117,13 @@ export default grammar(HTML, {
 						),
 					),
 					alias($.expression, $.attribute_name),
+					alias($._tag_comment, $.comment),
 				),
 			),
+
+		// https://github.com/sveltejs/svelte/pull/17671
+		// https://github.com/tree-sitter/tree-sitter-javascript/blob/58404d8cf191d69f2674a8fd507bd5776f46cb11/grammar.js#L1048
+		_tag_comment: () => token(seq('//', /[^\r\n\u2028\u2029]*/)),
 
 		if_statement: ($) =>
 			seq(

@@ -1,0 +1,22 @@
+============================
+Simple comment
+============================
+<!-- foo -->
+---
+(document (comment))
+
+============================
+Comment in tag
+============================
+<div
+    // asd
+></div>
+---
+(document
+    (element
+    (start_tag
+        (tag_name)
+        (attribute
+        (comment)))
+    (end_tag
+        (tag_name))))
