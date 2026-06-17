@@ -428,6 +428,15 @@
               },
               "named": true,
               "value": "attribute_name"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_tag_comment"
+              },
+              "named": true,
+              "value": "comment"
             }
           ]
         }
@@ -542,6 +551,22 @@
           {
             "type": "SYMBOL",
             "name": "expression"
+          }
+        ]
+      }
+    },
+    "_tag_comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "//"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^\\r\\n\\u2028\\u2029]*"
           }
         ]
       }
