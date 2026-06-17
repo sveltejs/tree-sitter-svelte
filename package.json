@@ -1,69 +1,21 @@
 {
-  "name": "@tree-sitter-grammars/tree-sitter-svelte",
-  "version": "1.0.2",
-  "description": "Svelte grammar for tree-sitter",
-  "repository": "github:tree-sitter-grammars/tree-sitter-svelte",
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "MIT",
-  "author": "Amaan Qureshi <amaanq12@gmail.com>",
-  "main": "bindings/node",
-  "types": "bindings/node",
-  "files": [
-    "grammar.js",
-    "binding.gyp",
-    "prebuilds/**",
-    "bindings/node/*",
-    "queries/*",
-    "src/**",
-    "*.wasm"
-  ],
-  "keywords": [
-    "incremental",
-    "parsing",
-    "tree-sitter",
-    "svelte"
-  ],
-  "dependencies": {
-    "node-addon-api": "^8.1.0",
-    "node-gyp-build": "^4.8.2",
-    "tree-sitter-html": "^0.23.0"
-  },
-  "devDependencies": {
-    "eslint": "^9.10.0",
-    "eslint-config-google": "^0.14.0",
-    "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.23.0"
-  },
-  "peerDependencies": {
-    "tree-sitter": "^0.21.1"
-  },
-  "peerDependenciesMeta": {
-    "tree_sitter": {
-      "optional": true
-    }
-  },
-  "scripts": {
-    "install": "node-gyp-build",
-    "lint": "eslint grammar.js",
-    "prestart": "tree-sitter build --wasm",
-    "start": "tree-sitter playground",
-    "test": "node --test bindings/node/*_test.js"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.svelte",
-      "injection-regex": "svelte",
-      "file-types": [
-        "svelte"
-      ],
-      "highlights": [
-        "queries/highlights.scm"
-      ],
-      "injections": [
-        "queries/injections.scm"
-      ]
-    }
-  ]
+	"name": "tree-sitter-svelte",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "tree-sitter build --wasm",
+		"play": "tree-sitter playground",
+		"test": "tree-sitter test",
+		"check": "prettier --check . && tsc",
+		"fix": "prettier --write ."
+	},
+	"packageManager": "pnpm@11.7.0",
+	"dependencies": {
+		"tree-sitter-html": "^0.23.2"
+	},
+	"devDependencies": {
+		"prettier": "^3.8.4",
+		"prettier-plugin-svelte": "^4.1.1",
+		"tree-sitter-cli": "^0.26.9"
+	}
 }
